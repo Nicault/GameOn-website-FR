@@ -34,7 +34,7 @@ img {
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  margin: 50px;
+  margin: 50px 20px;
 }
 .header-logo {
     /* float: left;     */
@@ -141,13 +141,13 @@ img {
 main {
   /* font-size: 130%; */
   font-size: 25px;
-  font-weight: bolder;
+  /* font-weight: bolder; */
   color: black;
   /* padding-top: 0.5vw; */
   /* padding-left: 2vw; */
   /* padding-right: 2vw; */
   /* padding: 0.5vh 2vw ; */
-  margin: 15px 50px;
+  margin: 15px 20px;
   /* border-radius: 2rem; */
   text-align: justify;
 }
@@ -229,7 +229,7 @@ main {
 label {
   font-family: var(--font-default);
   font-size: 17px;
-  font-weight: normal;
+  /* font-weight: normal; */
   display: inline-block;
   margin-bottom: 11px;
 }
@@ -275,7 +275,7 @@ input[data-error]::after {
   position: relative;
   margin-left: 36px;
   font-size: 12px;
-  font-weight: normal;
+  /* font-weight: normal; */
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
@@ -376,7 +376,7 @@ input[data-error]::after {
   position: relative;
   font-family: Arial;
   font-size: 1.1rem;
-  font-weight: normal;
+  /* font-weight: normal; */
 }
 
 .custom-select select {
@@ -439,7 +439,7 @@ input[data-error]::after {
 }
 /* custom select end */
 .text-label {
-  font-weight: normal;
+  /* font-weight: normal; */
   font-size: 16px;
 }
 .hero-section {
@@ -462,7 +462,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  width: 450px;
+  width: 460px;
 }
 /* .hero-content::after {
   content: "";
@@ -480,12 +480,12 @@ input[data-error]::after {
 .hero-headline {
   /* font-size: 5rem; */
   font-size: 75px;
-  font-weight: normal;
+  /* font-weight: normal; */
   white-space: nowrap;
 }
 .hero-text {
   /* width: 100%; */
-  font-weight: normal;
+  /* font-weight: normal; */
   margin-top: 50px;
   /* padding: 0; */
 }
