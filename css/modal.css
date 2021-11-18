@@ -128,7 +128,9 @@ img {
     height : 30px;
     margin-top: 10px;
   }
-
+  .topnav{
+    margin: 20px;
+  }
   .topnav a {
     display: none;}
   .topnav a.icon {
@@ -208,7 +210,14 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+
+
+  /* margin: 10% auto; */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -216,9 +225,18 @@ main {
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   color: #fff;
   padding-top: 10px;
+}
+
+/* ATTENTION !! j'ai mis le contnt en position absolue par rapport au bground ! si jamais il y a un pb
+par la suite c'en est peut etre la cause !!!!! */
+
+@media screen and (max-width: 540px) {
+  .content{
+    margin-top: 91px;
+  }
 }
 
 .modal-body {
@@ -464,6 +482,8 @@ input[data-error]::after {
   text-align: left;
   width: 460px;
 }
+
+
 /* .hero-content::after {
   content: "";
   width: 100%;
@@ -472,11 +492,13 @@ input[data-error]::after {
   position: absolute;
   right: -80px;
   top: 0;
-} */
-/* .hero-content > * {
+}
+.hero-content > * {
   position: relative;
   z-index: 1;
 } */
+
+
 .hero-headline {
   /* font-size: 5rem; */
   font-size: 75px;
@@ -566,8 +588,9 @@ footer {
     font-size: 20px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin: 20px 0;
     text-align: center;
+    font-size: 15px;
   }
 }
 
