@@ -246,7 +246,7 @@ par la suite c'en est peut etre la cause !!!!! */
   justify-content: center;
   align-items: center;
   padding: 35px ;
-  min-height: 753px;
+  min-height: 762px;
   /* margin: 15px auto; */
 }
 
@@ -255,7 +255,7 @@ label {
   font-size: 17px;
   /* font-weight: normal; */
   display: inline-block;
-  margin-bottom: 11px;
+  margin: 5px 0;
 }
 input {
   padding: 8px;
@@ -618,3 +618,15 @@ footer {
   bottom: 35px;
 }
 
+.color-white {
+  color: white;
+}
+
+.input-wrong{
+  outline: 1px solid red;
+}
+
+.redText{
+  color: red;
+  font-size: 10px;
+}
