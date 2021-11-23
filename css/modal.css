@@ -210,42 +210,31 @@ main {
 }
 
 .content {
-
-
-  /* margin: 10% auto; */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  
-
+  margin: 5% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
-  animation-fill-mode: forwards;
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
-  position: absolute;
+  position: relative;
   color: #fff;
-  /* padding-top: 10px; */
+  padding-top: 10px;
 }
 
-/* ATTENTION !! j'ai mis le contnt en position absolue par rapport au bground ! si jamais il y a un pb
-par la suite c'en est peut etre la cause !!!!! */
-
-@media screen and (max-width: 540px) {
+/* @media screen and (max-width: 540px) {
   .content{
     margin-top: 91px;
   }
-}
+} */
 
 .modal-body {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* text-align: left; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: center; */
+  /* align-items: center; */
   padding: 35px ;
   min-height: 865px;
   /* margin: 15px auto; */
@@ -606,11 +595,10 @@ footer {
 @keyframes modalopen {
   from {
     opacity: 0;
-    transform: translate(-50%, -200px);
+    transform: translateY(-150px);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -45%);
   }
 }
 
@@ -632,8 +620,11 @@ footer {
   padding: 5px;
   color: red;
   font-size: 12px;
+  transition: 200ms;
 }
 
 .opacity0 {
   opacity: 0;
+  transition: 200ms;
+
 }
