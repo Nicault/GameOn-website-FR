@@ -14,23 +14,13 @@ const formData = document.querySelectorAll(".formData");
 const submitButton = document.querySelector(".btn-submit")
 
 
+
 // icon color
 const iconMenu= document.querySelector(".icon")
 
 iconMenu.addEventListener("click", function() {
   document.querySelector(".fa-bars").classList.toggle("color-white")
 })
-
-
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// close modal event
-const closeModalButton = document.querySelector(".close")
-
-closeModalButton.addEventListener("click", closeModal)
-
 
 
 
@@ -44,21 +34,24 @@ function closeModal() {
 }
 
 
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// close modal event
+const closeModalButton = document.querySelector(".close")
+
+closeModalButton.addEventListener("click", closeModal)
 
 
 
-// submit form && fonction qui va verifier que tout est bon
-const modalBody = document.querySelector(".modal-body")
 
+ //creations des div red text
+ 
 const casesFormulaire = document.querySelectorAll(".formData")
 
 let redTexts = []
 for (let i = 0 ; i < casesFormulaire.length ; i++) {
-  redTexts.push("") 
-}
-
-for (let i = 0 ; i < redTexts.length ; i++ ) {
-  redTexts[i] = document.createElement("DIV")
+  redTexts.push(document.createElement("DIV"))
   redTexts[i].classList.add("red-text" , "opacity0")
   casesFormulaire[i].appendChild(redTexts[i])
 }
@@ -67,7 +60,7 @@ redTexts[0].textContent = "Veuillez entrer 2 caractères ou plus pour le champ d
 redTexts[1].textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom."
 redTexts[2].textContent = "Veuillez entrer une adresse mail valide."
 redTexts[3].textContent = "Veuillez entrer votre date de naissance."
-redTexts[4].textContent = "Veuillez choisir une option."
+redTexts[4].textContent = "Veuillez entrer un nombre."
 // redTexts[5].textContent =
 redTexts[6].textContent = "Veuillez vérifier que vous avez accepté les conditions d'utilisation."
 
@@ -83,7 +76,7 @@ redTexts[6].textContent = "Veuillez vérifier que vous avez accepté les conditi
       constName.classList.remove("input-wrong")
     }
     
-        // red text 
+    // red text 
     
     function redText (array) {
       redTexts[array].classList.remove("opacity0")  
@@ -92,7 +85,7 @@ redTexts[6].textContent = "Veuillez vérifier que vous avez accepté les conditi
       redTexts[array].classList.add("opacity0")  
     }
     
-        //wrong input
+    //wrong input
     
     function wrongInput (constName, array) {
       redBox (constName)
@@ -107,124 +100,124 @@ redTexts[6].textContent = "Veuillez vérifier que vous avez accepté les conditi
     }
 
 
-function messageConfirmation() {
-  if (modalBody && nameLengthIsRight(firstName, 0) && nameLengthIsRight(lastName, 1) && emailIsRight(email, 2) && numberIsRight(birthdate, 3) && numberIsRight(quantity, 4) && usingConditionsIsChecked(usingConditionsCheckbox, 6)) {
-  modalBody.innerHTML = "<div>Merci ! Votre réservation a été reçue.</div><button class='btn-submit button flex-end' id='btn-close'>Fermer</button>"
-  document.querySelector("#btn-close").addEventListener("click", closeModal)
-  return true
 
-  } else {
-    submitButton.addEventListener("click", function(e){
-      
-      e.preventDefault()
-
-
-      if (!nameLengthIsRight(firstName, 0)) {
-      }
-      if (!nameLengthIsRight(lastName, 1)) {
-
-      }
-      if (!emailIsRight(email, 2)) {
-
-      }
-      if (!numberIsRight(birthdate, 3)) {
-
-      }
-      if (!numberIsRight(quantity, 4)) {
-
-      }
-      if (!usingConditionsIsChecked(usingConditions, 6)) {
-
-      }
-      
-      return false
-    })
-    
-  }
-} 
-
-submitButton.addEventListener("click", messageConfirmation)
-
-
-
-
-    //names
+//first + last names
 
 const firstName = document.querySelector("#first")
 const lastName = document.querySelector("#last")
 
 function nameLengthIsRight(constName, array) {
   if (constName.value.length >= 2) {
-    goodInput (constName, array)
+    return goodInput (constName, array)
   }
   else {
-    wrongInput (constName, array)  
+    return wrongInput (constName, array)  
 
   }
 }
 
-    //mail
+//email
 
 let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/  
 const email = document.querySelector("#email")
 
-function emailIsRight(constName, array) {
-  if (regexEmail.test(constName.value)) {
-    goodInput (constName, array)
+function emailIsRight(){
+  if (regexEmail.test(email.value)) {
+    return goodInput (email, 2)
   }
   else {
-    wrongInput (constName, array)  
+    return wrongInput (email, 2)  
 
   }
 }
 
 
-    //birthdate + quantity
+//birthdate + quantity
 
 const birthdate = document.querySelector("#birthdate")
 const quantity = document.querySelector("#quantity")
 
 function numberIsRight(constName, array) {
   if (constName.value){
-    goodInput (constName, array)
+    return goodInput (constName, array)
   }
   else {
-    wrongInput (constName, array) 
+    return wrongInput (constName, array) 
   }
 }
 
 
-    // using conditions /!\ verifier array si ajout de nouvelles checkboxes !!
+// using conditions /!\ verifier array si ajout de nouvelles checkboxes !!
 
 const usingConditions = document.querySelector("#checkbox1")
 const Checkboxes = document.querySelectorAll(".checkbox-icon")
 const usingConditionsCheckbox = Checkboxes[6]
 
-function usingConditionsIsChecked(constName, array) {
+function usingConditionsIsChecked() {
   if (usingConditions.checked){
-    goodInput (constName, array)
+    return goodInput (usingConditionsCheckbox, 6)
   }
   else {
-    wrongInput (constName, array)  
+    return wrongInput (usingConditionsCheckbox, 6)  
   }
 }
 
-
-
-// fonction validate appelée dans le html (pas encore compris son utilité)
-
-function validate (validation) {
-  if (validation) {
-    return true
-  }
-}
-validate (messageConfirmation)
 
 // Listeners 
 
 firstName.addEventListener("change", function(){nameLengthIsRight(firstName, 0)})
 lastName.addEventListener("change", function(){nameLengthIsRight(lastName, 1)})
-email.addEventListener("change", function() {emailIsRight(email, 2)})
+email.addEventListener("change", function() {emailIsRight()})
 birthdate.addEventListener("focusout", function() {numberIsRight(birthdate, 3)})
 quantity.addEventListener("focusout", function() {numberIsRight(quantity, 4)})
 usingConditions.addEventListener("click", function() {usingConditionsIsChecked(usingConditionsCheckbox, 6)})
+
+
+
+
+
+
+
+// submit form && fonction VALIDATE
+const modalBody = document.querySelector(".modal-body") 
+
+let inputs = document.querySelectorAll("input")
+let checkboxes = document.querySelectorAll(".checkbox-icon")
+
+function validate() {
+  if (modalBody 
+    && nameLengthIsRight(firstName, 0) 
+    && nameLengthIsRight(lastName, 1) 
+    && emailIsRight() 
+    && numberIsRight(birthdate, 3) 
+    && numberIsRight(quantity, 4) 
+    && usingConditionsIsChecked()) {
+
+    modalBody.innerHTML = "<div>Merci ! Votre réservation a été reçue.</div><button class='btn-submit button flex-end' id='btn-close'>Fermer</button>"
+    document.querySelector("#btn-close").addEventListener("click", closeModal)
+
+      // for (let i = 0 ; i < inputs.length ; i++){
+      //   inputs[i].value = ""
+      // }
+
+      // for (let i = 0 ; i < checkboxes.length ; i++) {
+      //   checkboxes[i].checked = "false"      
+      // }
+      
+  return true
+
+  } else {
+
+      nameLengthIsRight(firstName, 0)
+      nameLengthIsRight(lastName, 1)
+      emailIsRight()
+      numberIsRight(birthdate, 3)
+      numberIsRight(quantity, 4)
+      usingConditionsIsChecked()
+      
+      return false
+    
+  }
+} 
+// submitButton.addEventListener("click", function(e) {e.preventDefault()})
+// submitButton.addEventListener("click", validate)
