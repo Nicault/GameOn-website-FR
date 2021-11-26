@@ -170,6 +170,8 @@ function usingConditionsIsChecked() {
 }
 
 // radio buttons
+// première boucle pour remplir le table radioResults avec des booléens, 
+// puis un event listener pour ajouter une valeur à chaque clic
 
 
 let radios = document.querySelectorAll("input[type='radio']")
@@ -209,6 +211,11 @@ for (let i = 0 ; i < radios.length ; i++) {
 
 
 // submit form && fonction VALIDATE
+// si toutes les fonctions renvoient true on affiche la modale de validation
+// else la validation est bloquée et les fonctions sont appelées 
+// rougit ce qui doit rougir
+
+
 const modalBody = document.querySelector(".modal-body") 
 
 let inputs = document.querySelectorAll("input")
@@ -241,4 +248,7 @@ function validate() {
     return false
   }
 } 
+
+
+//la fonction est appelée dans le html !
 
