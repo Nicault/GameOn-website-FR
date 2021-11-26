@@ -8,6 +8,8 @@ function editNav() {
 }
 
 // DOM Elements
+// constantes représentants differents element du DOM 
+
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -16,6 +18,8 @@ const submitButton = document.querySelector(".btn-submit")
 
 
 // icon color
+//change la couleur de l'icone du menu en version mobile
+//passe de rouge à blanc au clique
 const iconMenu= document.querySelector(".icon")
 
 iconMenu.addEventListener("click", function() {
@@ -46,8 +50,10 @@ closeModalButton.addEventListener("click", closeModal)
 
 
  //creations des div red text
+ //ajoute une div reText avec ses classes à chaque "case formulaire" de la modale 
  
 const casesFormulaire = document.querySelectorAll(".formData")
+
 
 let redTexts = []
 for (let i = 0 ; i < casesFormulaire.length ; i++) {
@@ -56,19 +62,20 @@ for (let i = 0 ; i < casesFormulaire.length ; i++) {
   casesFormulaire[i].appendChild(redTexts[i])
 }
 
-redTexts[0].textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-redTexts[1].textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+// contenus des red texts
+
+redTexts[0].textContent = "Veuillez entrer au moins 2 caractères pour le champ du prénom."
+redTexts[1].textContent = "Veuillez entrer au moins 2 caractères pour le champ du nom."
 redTexts[2].textContent = "Veuillez entrer une adresse mail valide."
 redTexts[3].textContent = "Veuillez entrer votre date de naissance."
 redTexts[4].textContent = "Veuillez entrer un nombre."
-// redTexts[5].textContent =
+redTexts[5].textContent = "Veuillez selectionner une ville"
 redTexts[6].textContent = "Veuillez vérifier que vous avez accepté les conditions d'utilisation."
 
 
 // error messages form
 
-    // red box
-
+    // red box 
     function redBox (constName) {
       constName.classList.add("input-wrong")
     }
@@ -149,9 +156,9 @@ function numberIsRight(constName, array) {
 
 // using conditions /!\ verifier array si ajout de nouvelles checkboxes !!
 
+const checkboxes = document.querySelectorAll(".checkbox-icon")
 const usingConditions = document.querySelector("#checkbox1")
-const Checkboxes = document.querySelectorAll(".checkbox-icon")
-const usingConditionsCheckbox = Checkboxes[6]
+const usingConditionsCheckbox = checkboxes[6]
 
 function usingConditionsIsChecked() {
   if (usingConditions.checked){
@@ -162,19 +169,42 @@ function usingConditionsIsChecked() {
   }
 }
 
+// radio buttons
+
+
+let radios = document.querySelectorAll("input[type='radio']")
+let radioResults = []
+
+
+for (let i = 0 ; i < radios.length ; i++) {
+  radioResults.push(radios[i].checked)
+  radios[i].addEventListener("click", function() {radioResults.push(radios[i].checked)})
+}
+
+function radioIsSelected() {
+  if (radioResults.includes(true)){
+    unredText(5)
+    return true
+  }
+  else {
+    redText(5)
+    return false
+  }
+}
+
+
 
 // Listeners 
 
 firstName.addEventListener("change", function(){nameLengthIsRight(firstName, 0)})
 lastName.addEventListener("change", function(){nameLengthIsRight(lastName, 1)})
 email.addEventListener("change", function() {emailIsRight()})
-birthdate.addEventListener("focusout", function() {numberIsRight(birthdate, 3)})
-quantity.addEventListener("focusout", function() {numberIsRight(quantity, 4)})
+birthdate.addEventListener("change", function() {numberIsRight(birthdate, 3)})
+quantity.addEventListener("change", function() {numberIsRight(quantity, 4)})
 usingConditions.addEventListener("click", function() {usingConditionsIsChecked(usingConditionsCheckbox, 6)})
-
-
-
-
+for (let i = 0 ; i < radios.length ; i++) {
+  radios[i].addEventListener("click", function() {radioIsSelected()})
+}
 
 
 
@@ -182,7 +212,6 @@ usingConditions.addEventListener("click", function() {usingConditionsIsChecked(u
 const modalBody = document.querySelector(".modal-body") 
 
 let inputs = document.querySelectorAll("input")
-let checkboxes = document.querySelectorAll(".checkbox-icon")
 
 function validate() {
   if (modalBody 
@@ -191,20 +220,13 @@ function validate() {
     && emailIsRight() 
     && numberIsRight(birthdate, 3) 
     && numberIsRight(quantity, 4) 
-    && usingConditionsIsChecked()) {
+    && usingConditionsIsChecked()
+    && radioIsSelected()) {
 
     modalBody.innerHTML = "<div>Merci ! Votre réservation a été reçue.</div><button class='btn-submit button flex-end' id='btn-close'>Fermer</button>"
     document.querySelector("#btn-close").addEventListener("click", closeModal)
 
-      // for (let i = 0 ; i < inputs.length ; i++){
-      //   inputs[i].value = ""
-      // }
-
-      // for (let i = 0 ; i < checkboxes.length ; i++) {
-      //   checkboxes[i].checked = "false"      
-      // }
-      
-  return true
+    return true
 
   } else {
 
@@ -214,10 +236,9 @@ function validate() {
       numberIsRight(birthdate, 3)
       numberIsRight(quantity, 4)
       usingConditionsIsChecked()
+      radioIsSelected()
       
-      return false
-    
+    return false
   }
 } 
-// submitButton.addEventListener("click", function(e) {e.preventDefault()})
-// submitButton.addEventListener("click", validate)
+

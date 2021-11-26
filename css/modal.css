@@ -210,7 +210,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin : 2% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -223,18 +223,12 @@ main {
   padding-top: 10px;
 }
 
-/* @media screen and (max-width: 540px) {
-  .content{
-    margin-top: 91px;
-  }
-} */
-
 .modal-body {
   /* text-align: left; */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: center; */
-  /* align-items: center; */
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 35px ;
   min-height: 865px;
   /* margin: 15px auto; */
@@ -260,6 +254,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -601,7 +596,6 @@ footer {
     opacity: 1;
   }
 }
-
 
 .flex-end {
   position: absolute;
