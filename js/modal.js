@@ -177,7 +177,6 @@ function usingConditionsIsChecked() {
 let radios = document.querySelectorAll("input[type='radio']")
 let radioResults = []
 
-
 for (let i = 0 ; i < radios.length ; i++) {
   radioResults.push(radios[i].checked)
   radios[i].addEventListener("click", function() {radioResults.push(radios[i].checked)})
@@ -230,7 +229,7 @@ function validate() {
     && usingConditionsIsChecked()
     && radioIsSelected()) {
 
-    modalBody.innerHTML = "<div>Merci ! Votre réservation a été reçue.</div><button class='btn-submit button flex-end' id='btn-close'>Fermer</button>"
+    modalBody.innerHTML = "<div class='validation'>Merci ! Votre participation a bien été reçue.</div><button class='btn-submit button flex-end' id='btn-close'>Fermer</button>"
     document.querySelector("#btn-close").addEventListener("click", closeModal)
 
     return true
