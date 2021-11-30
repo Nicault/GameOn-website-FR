@@ -17,7 +17,7 @@ body {
   /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 
@@ -468,7 +468,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  width: 460px;
+  width: 110%;
   border-radius: 10px 0 0 10px;
 }
 
